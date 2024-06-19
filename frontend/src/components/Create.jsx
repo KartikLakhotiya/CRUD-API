@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Button, Checkbox, Label, TextInput } from "flowbite-react";
 import toast from 'react-hot-toast';
 
-const Form = () => {
+const Create = () => {
 
     const [firstname, setFirstname] = useState("");
     const [lastname, setLastname] = useState("");
@@ -68,41 +68,41 @@ const Form = () => {
 
 
     return (
-        <div>
-            <h1>Registration Form</h1>
-            <div class="max-w-sm space-y-3">
+        <div className='flex flex-col items-center justify-center mt-14'>
+            <h1 className='text-4xl mb-4 font-bold text-black'>Registration Form</h1>
+            <div class="w-96 space-y-3">
                 <input type="text" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none mt-4" placeholder="Enter Your Firstname" name='firstname' id='firstname' onChange={handleInputChange} />
             </div>
 
-            <div class="max-w-sm space-y-3">
+            <div class="w-96 space-y-3">
                 <input type="text" class="py-3 mt-4 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="Enter Your Lastname" name='lastname' id='lastname' onChange={handleInputChange} />
             </div>
 
-            <div class="max-w-sm space-y-3">
+            <div class="w-96 space-y-3">
                 <input type="text" class="py-3 px-4 mt-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="Enter Your Username" name='username' id='username' onChange={handleInputChange} />
             </div>
 
-            <div class="max-w-sm space-y-3">
+            <div class="w-96 space-y-3">
                 <input type="text" class="py-3 px-4 mt-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="Enter Your Email" name='email' id='email' onChange={handleInputChange} />
             </div>
 
-            <div class="max-w-sm space-y-3">
+            <div class="w-96 space-y-3">
                 <input type="password" class="py-3 px-4 mt-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="Enter Your Password" name='password' id='password' onChange={handleInputChange} />
             </div>
 
-            <div class="max-w-sm space-y-3">
+            <div class="w-96 space-y-3">
                 <input type="number" class="py-3 px-4 block mt-4 w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="Enter Your Age" name='age' id='age' onChange={handleInputChange} />
             </div>
 
-            <div class="max-w-sm space-y-3">
+            <div class="w-96 space-y-3">
                 <input type="text" class="py-3 px-4 mt-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="Enter Your City" name='city' id='city' onChange={handleInputChange} />
             </div>
 
 
             {/* Button */}
-            <input type="submit" name="" id="" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none mt-10" onClick={submit} />
+            <input type="submit" name="" id="" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none mt-10 w-60" onClick={submit} />
         </div>
     )
 }
 
-export default Form
+export default Create
