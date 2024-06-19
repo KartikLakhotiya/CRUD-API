@@ -44,3 +44,35 @@ export const signUp = async (req, res) => {
     }
 
 }
+
+export const getUser = async (req, res) => {
+    try {
+
+        const { username, password } = req.body;
+        console.log(username, password)
+        const user = await User.findOne({ username })
+        const isPassCorrect = await bcrypt.compare(password, user?.password || "")
+        if (!user || !isPassCorrect) {
+            return res.status(400).json({ error: "Invalid username or Password." })
+        }
+
+        console.log(`User fetched ${user.email}`)
+        console.log(user)
+        res.status(201).json({
+            _id: user._id,
+            firstname: user.firstname,
+            lastname: user.lastname,
+            username: user.username,
+            email: user.email,
+            age: user.age,
+            city: user.city,
+            created: user.createdAt,
+            updated: user.updatedAt
+        })
+
+    }
+    catch (error) {
+        console.log(error)
+        res.status(500).json({ error: "Internal Server Error" })
+    }
+}
