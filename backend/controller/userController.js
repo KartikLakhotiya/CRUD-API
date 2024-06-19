@@ -23,8 +23,18 @@ export const signUp = async (req, res) => {
         if (newUser) {
             await newUser.save();
             console.log(`User created ${newUser.email}`);
+            res.status(201).json({
+                _id: newUser._id,
+                firstname: newUser.firstname,
+                lastname: newUser.lastname,
+                username: newUser.username,
+                email: newUser.email,
+                age: newUser.age,
+                city: newUser.city,
+                created: newUser.createdAt,
+                updated: newUser.updatedAt
+            })
 
-            res.status(201).json(newUser)
         }
 
     }
