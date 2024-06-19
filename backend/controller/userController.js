@@ -1,5 +1,6 @@
 import bcrypt from 'bcrypt';
 import User from '../models/userModel.js';
+import all from 'all';
 
 export const signUp = async (req, res) => {
 
@@ -70,6 +71,29 @@ export const getUser = async (req, res) => {
             updated: user.updatedAt
         })
 
+    }
+    catch (error) {
+        console.log(error)
+        res.status(500).json({ error: "Internal Server Error" })
+    }
+}
+
+export const updateUser = (req, res) => {
+    try {
+
+        const { username } = req.body;
+    }
+    catch (error) {
+        console.log(error)
+        res.status(500).json({ error: "Internal Server Error" })
+    }
+}
+
+export const fetchAll = async (req, res) => {
+    try {
+        const allUsers = await User.find().select('-password');
+        console.log(allUsers)
+        res.status(201).json(allUsers);
     }
     catch (error) {
         console.log(error)
