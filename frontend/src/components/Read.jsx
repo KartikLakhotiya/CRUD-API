@@ -22,7 +22,8 @@ const Read = () => {
             'password': password
         }
 
-        const response = await fetch('http://localhost:8080/api/auth/getuser', {
+        // use http://localhost:8080 for local deployment
+        const response = await fetch('https://crud-api-s3e6.onrender.com/api/auth/getuser', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

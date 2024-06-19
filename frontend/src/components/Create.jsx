@@ -52,7 +52,8 @@ const Create = () => {
             'city': city
         }
 
-        const response = await fetch('http://localhost:8080/api/auth/signup', {
+        // use http://localhost:8080 for local deployment
+        const response = await fetch('https://crud-api-s3e6.onrender.com/api/auth/signup', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
