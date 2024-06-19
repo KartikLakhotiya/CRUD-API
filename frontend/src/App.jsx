@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
+import { terminal } from 'virtual:terminal'
+
 import './App.css'
 import Create from './components/Create'
 import toast, { Toaster } from 'react-hot-toast';
@@ -9,7 +11,7 @@ import Home from './components/Home'
 import Read from './components/Read'
 
 function App() {
-
+  
   return (
     <Router>
       <Routes>

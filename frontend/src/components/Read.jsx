@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import toast from 'react-hot-toast'
+import { terminal } from 'virtual:terminal'
+
 
 const Read = () => {
 
@@ -33,6 +35,8 @@ const Read = () => {
             // console.log(obj)
             setUser(obj)
             console.log(user)
+            terminal.log(`User Fetched ${user.email}`)
+
         })
     }
 
@@ -54,7 +58,7 @@ const Read = () => {
 
             {user && (
                 <div className="user-details-container ">
-                    <div className="user-details bg-white p-6 rounded-lg shadow-md dark:bg-gray-800 hover:scale-110 transition-scale-110 duration-300 ease-in-out ml-28 w-96">
+                    <div className="user-details bg-white p-6 rounded-lg shadow-md dark:bg-gray-800 hover:scale-110 transition-scale-110 duration-300 ease-in-out ml-28 w-96 animate-bounce">
                         <h2 className="text-2xl font-bold mb-11 text-gray-900 dark:text-white">User Details</h2>
                         <div className="mb-4 text-gray-700 dark:text-gray-300">
                             <strong>First Name:</strong> {user.firstname} <br />
