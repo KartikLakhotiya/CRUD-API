@@ -4,7 +4,8 @@
 @tailwind utilities;
 
 *{
-  font-family: 'Inter';
+  /* font-family: 'Inter'; */
+  font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
 }
 
 body{

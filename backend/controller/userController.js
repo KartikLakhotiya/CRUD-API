@@ -99,3 +99,21 @@ export const fetchAll = async (req, res) => {
         res.status(500).json({ error: "Internal Server Error" })
     }
 }
+
+export const editUser = async (req, res) => {
+
+}
+
+export const deleteUser = async (req, res) => {
+    const { id } = req.params;
+    try {
+
+        await User.findByIdAndDelete(id);
+        res.status(200).json({ message: 'User Deleted Successfully.' })
+
+    }
+    catch (error) {
+        console.log(error)
+        res.status(500).json({ error: "Internal Server Error" })
+    }
+}

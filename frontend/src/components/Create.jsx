@@ -12,6 +12,7 @@ const Create = () => {
     const [age, setAge] = useState(0);
     const [city, setCity] = useState("");
 
+
     const handleInputChange = (e) => {
         const { id, value } = e.target;
         if (id === 'firstname') setFirstname(value)
@@ -21,27 +22,83 @@ const Create = () => {
         if (id === 'password') setPassword(value)
         if (id === 'age') setAge(value)
         if (id === 'city') setCity(value)
-
-
-
-
-
     }
+
+    const checkUsernameExists = async (username) => {
+        const response = await fetch('http://localhost:8080/api/auth/fetchall', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        const allUsers = await response.json();
+        return allUsers.some(user => user.username === username);
+    };
+
+    const checkEmailExists = async (email) => {
+        const response = await fetch('http://localhost:8080/api/auth/fetchall', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        const allUsers = await response.json();
+        return allUsers.some(user => user.email === email);
+    };
+
+
 
     const submit = async (event) => {
         event.preventDefault();
 
+        // Validations
 
-        // validations
-        if (firstname === "") return toast.error("Firstname Cannot be Empty.")
-        if (lastname === "") return toast.error("Lastname Cannot be Empty.")
-        if (username === "") return toast.error("Username Cannot be Empty.")
-        if (email === "") return toast.error("Email Cannot be Empty.")
-        if (password === "") return toast.error("Password Cannot be Empty.")
-        if (age === "") return toast.error("Age Cannot be Empty.")
-        if (city === "") return toast.error("City Cannot be Empty.")
+        // All
+        if (firstname === "") return toast.error("Firstname Cannot be Empty.");
+        if (lastname === "") return toast.error("Lastname Cannot be Empty.");
+        if (username === "") return toast.error("Username Cannot be Empty.");
+        if (email === "") return toast.error("Email Cannot be Empty.");
+        if (password === "") return toast.error("Password Cannot be Empty.");
+        if (age === "") return toast.error("Age Cannot be Empty.");
+        if (city === "") return toast.error("City Cannot be Empty.");
 
-        console.log(firstname, lastname, username, age, city)
+        //username
+        /*
+        const lower = /^[a-z]$/.test(username)
+        console.log("username validation", lower)
+        if (!lower) return toast.error("Username cannot contain upper case letters.")
+        */
+
+        //email
+        var atIdx = email.indexOf("@")
+        var dotIdx = email.indexOf(".")
+        if (atIdx > 0 && dotIdx > atIdx + 1 && email.length > dotIdx) { }
+        else {
+            toast.error('Invalid Email Format.')
+            return
+        }
+
+        //age
+        const ageValidation = /[0-9]/.test(age)
+        if (!ageValidation) return toast.error('Age must be a number.')
+
+
+
+        // Checking if username already exists in the database.
+        const usernameExists = await checkUsernameExists(username);
+        if (usernameExists) {
+            return toast.error('Username Already Exists.');
+        }
+
+        // Checking email already exists.
+        const emailExists = await checkEmailExists(email);
+        if (emailExists) {
+            return toast.error('Email Already Exists.');
+        }
+
+        // Inserting data
         const data = {
             'firstname': firstname,
             'lastname': lastname,
@@ -50,61 +107,27 @@ const Create = () => {
             'password': password,
             'age': age,
             'city': city
-        }
+        };
 
-        // use http://localhost:8080 for local deployment
-        const response = await fetch('https://crud-api-s3e6.onrender.com/api/auth/signup', {
+        // Use http://localhost:8080 for local deployment
+        const response = await fetch('http://localhost:8080/api/auth/signup', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data)
-        })
-        console.log(response)
+        });
 
-        if (response.ok) toast.success("Form Submitted.")
-        else toast.error("Form Not Submitted.")
-    }
+        if (response.ok) {
+            toast.success("Form Submitted.");
+        } else {
+            toast.error("Form Not Submitted.");
+        }
+    };
 
 
 
     return (
-        // <div className='flex flex-col items-center justify-center mt-14'>
-        //     <h1 className='text-4xl mb-4 font-bold text-black'>Registration Form</h1>
-        //     <div class="w-96 space-y-3">
-        //         <input type="text" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none mt-4" placeholder="Enter Your Firstname" name='firstname' id='firstname' onChange={handleInputChange} />
-        //     </div>
-
-        //     <div class="w-96 space-y-3">
-        //         <input type="text" class="py-3 mt-4 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="Enter Your Lastname" name='lastname' id='lastname' onChange={handleInputChange} />
-        //     </div>
-
-        //     <div class="w-96 space-y-3">
-        //         <input type="text" class="py-3 px-4 mt-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="Enter Your Username" name='username' id='username' onChange={handleInputChange} />
-        //     </div>
-
-        //     <div class="w-96 space-y-3">
-        //         <input type="text" class="py-3 px-4 mt-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="Enter Your Email" name='email' id='email' onChange={handleInputChange} />
-        //     </div>
-
-        //     <div class="w-96 space-y-3">
-        //         <input type="password" class="py-3 px-4 mt-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="Enter Your Password" name='password' id='password' onChange={handleInputChange} />
-        //     </div>
-
-        //     <div class="w-96 space-y-3">
-        //         <input type="number" class="py-3 px-4 block mt-4 w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="Enter Your Age" name='age' id='age' onChange={handleInputChange} />
-        //     </div>
-
-        //     <div class="w-96 space-y-3">
-        //         <input type="text" class="py-3 px-4 mt-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="Enter Your City" name='city' id='city' onChange={handleInputChange} />
-        //     </div>
-
-
-        //     {/* Button */}
-        //     <input type="submit" name="" id="" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none mt-10 w-60" onClick={submit} />
-        // </div>
-
-
         <div className='flex flex-col justify-center items-center'>
             <h1 className='text-4xl font-bold mt-10'>Registration Form</h1>
             <div class="max-w-md mx-auto bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 px-12 py-12 mt-11">
@@ -142,6 +165,7 @@ const Create = () => {
                 </div>
                 <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ml-28 mt-5" onClick={submit} >Submit</button>
             </div>
+            {/* <button onClick={click}>Click Fn</button> */}
         </div>
 
     )
