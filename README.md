@@ -2,6 +2,8 @@
 
 Welcome to the CRUD API repository! This project demonstrates a basic CRUD (Create, Read, Update, Delete) API using Node.js, Express, and MongoDB. This API allows users to create, read, update, and delete resources stored in a MongoDB database.
 
+There are some unecessary codes in the backend directory but I will soon make the codes more readable and understandable. I added these codes for testing the APIs.
+
 ## Features
 
 - **Create**: Add new resources to the database.
