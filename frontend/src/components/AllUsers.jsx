@@ -9,7 +9,7 @@ const AllUsers = () => {
     const fetchAll = async () => {
         try {
             toast.loading('Retrieving Data', { id: 'fetch-toast' });
-            const response = await fetch('http://localhost:8080/api/auth/fetchall', {
+            const response = await fetch('https://crud-api-oxuk.onrender.com/api/auth/fetchall', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -31,7 +31,7 @@ const AllUsers = () => {
 
     const deleteUser = async (id) => {
         try {
-            const response = await fetch(`http://localhost:8080/api/auth/delete/${id}`, {
+            const response = await fetch(`https://crud-api-oxuk.onrender.com/api/auth/delete/${id}`, {
                 method: 'DELETE',
             });
             const a = await response.json();

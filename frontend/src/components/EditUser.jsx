@@ -17,7 +17,7 @@ const EditUser = () => {
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const response = await fetch(`http://localhost:8080/api/auth/fetch/${id}`);
+                const response = await fetch(`https://crud-api-oxuk.onrender.com/api/auth/fetch/${id}`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
@@ -41,7 +41,7 @@ const EditUser = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch(`http://localhost:8080/api/auth/edit/editeduser/${id}`, {
+            const response = await fetch(`https://crud-api-oxuk.onrender.com/api/auth/edit/editeduser/${id}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

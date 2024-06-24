@@ -25,7 +25,7 @@ const Create = () => {
     }
 
     const checkUsernameExists = async (username) => {
-        const response = await fetch('http://localhost:8080/api/auth/fetchall', {
+        const response = await fetch('https://crud-api-oxuk.onrender.com/api/auth/fetchall', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -37,7 +37,7 @@ const Create = () => {
     };
 
     const checkEmailExists = async (email) => {
-        const response = await fetch('http://localhost:8080/api/auth/fetchall', {
+        const response = await fetch('https://crud-api-oxuk.onrender.com/api/auth/fetchall', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -110,7 +110,7 @@ const Create = () => {
         };
 
         // Use http://localhost:8080 for local deployment
-        const response = await fetch('http://localhost:8080/api/auth/signup', {
+        const response = await fetch('https://crud-api-oxuk.onrender.com/api/auth/signup', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
