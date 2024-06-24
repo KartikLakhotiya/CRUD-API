@@ -30,15 +30,17 @@ const AllUsers = () => {
     };
 
     const deleteUser = async (id) => {
+        toast.loading('Deleting User', { id: 'user-delete-toast' });
+
         try {
             const response = await fetch(`https://crud-api-oxuk.onrender.com/api/auth/delete/${id}`, {
                 method: 'DELETE',
             });
             const a = await response.json();
             console.log(a);
-            if (!response.ok) return toast.error('Some Error Occurred');
+            if (!response.ok) return toast.error('Some Error Occurred', { id: 'user-delete-toast' });
 
-            toast.success('User deleted.');
+            toast.success('User deleted.', { id: 'user-delete-toast' });
             fetchAll();
         } catch (error) {
             console.log(error);
