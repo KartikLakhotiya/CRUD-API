@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import { Link, useNavigate } from 'react-router-dom';
 
 const AllUsers = () => {
     const [allUsers, setAllUsers] = useState([]);
+    const navigate = useNavigate();
 
-    // use http://localhost:8080 for local deployment
     const fetchAll = async () => {
         try {
             toast.loading('Retrieving Data', { id: 'fetch-toast' });
@@ -30,22 +31,24 @@ const AllUsers = () => {
 
     const deleteUser = async (id) => {
         try {
-
             const response = await fetch(`http://localhost:8080/api/auth/delete/${id}`, {
                 method: 'DELETE',
-            })
-            const a = response.json();
-            console.log(a)
-            if (!response.ok) return toast.error('Some Error Occured')
+            });
+            const a = await response.json();
+            console.log(a);
+            if (!response.ok) return toast.error('Some Error Occurred');
 
-            toast.success("User deleted.")
+            toast.success('User deleted.');
             fetchAll();
-
         } catch (error) {
-            console.log(error)
-            toast.error('Failed to delete user.')
+            console.log(error);
+            toast.error('Failed to delete user.');
         }
-    }
+    };
+
+    const editUser = (id) => {
+        navigate(`/edit-user/${id}`);
+    };
 
     useEffect(() => {
         fetchAll();
@@ -71,7 +74,7 @@ const AllUsers = () => {
                     </thead>
                     <tbody>
                         {allUsers.map((item, index) => {
-                            const { firstname, lastname, username, age, email, city } = item;
+                            const { _id, firstname, lastname, username, age, email, city } = item;
                             return (
                                 <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-900">
                                     <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -85,10 +88,12 @@ const AllUsers = () => {
                                     <td className="px-6 py-4">{age}</td>
                                     <td className="px-6 py-4">{city}</td>
                                     <td className="px-6 py-4 text-right">
-                                        <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                        <a onClick={() => editUser(_id)} className="font-medium text-blue-600 dark:text-blue-500 hover:underline cursor-pointer">
+                                            Edit
+                                        </a>
                                     </td>
                                     <td className="px-6 py-4 text-right">
-                                        <a className="font-medium text-red-600 dark:text-red-500 hover:underline cursor-pointer" onClick={deleteUser} >Delete</a>
+                                        <a className="font-medium text-red-600 dark:text-red-500 hover:underline cursor-pointer" onClick={() => deleteUser(_id)}>Delete</a>
                                     </td>
                                 </tr>
                             );

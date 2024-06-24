@@ -101,7 +101,19 @@ export const fetchAll = async (req, res) => {
 }
 
 export const editUser = async (req, res) => {
+    const { id } = req.params;
+    const { firstname, lastname, username, email, age, city } = req.body;
 
+    try {
+
+        await User.findByIdAndUpdate(id, { firstname, lastname, username, email, age, city })
+        res.status(200).json({ message: 'User Updated Successfully.' })
+
+    }
+    catch (error) {
+        console.log(error)
+        res.status(500).json({ error: "Internal Server Error" })
+    }
 }
 
 export const deleteUser = async (req, res) => {
@@ -115,5 +127,45 @@ export const deleteUser = async (req, res) => {
     catch (error) {
         console.log(error)
         res.status(500).json({ error: "Internal Server Error" })
+    }
+}
+
+export const editedUser = async (req, res) => {
+    const { firstname, lastname, username, age, city } = req.body;
+    try {
+
+        const user = await User.findById(req.params.id)
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' })
+        }
+
+        user.firstname = firstname;
+        user.lastname = lastname;
+        user.username = username;
+        user.age = age;
+        user.city = city;
+
+        await user.save();
+        res.json(user);
+
+    }
+    catch (error) {
+        console.log(error)
+        res.status(500).json({ error: "Internal Server Error" })
+    }
+}
+
+export const fetchUserById = async (req, res) => {
+    try {
+
+        const user = await User.findById(req.params.id)
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' })
+        }
+
+    }
+    catch (error) {
+        console.log(error)
+        res.status(500).json({ error: "Internal Server Error", message: error })
     }
 }

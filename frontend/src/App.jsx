@@ -11,6 +11,7 @@ import Home from './components/Home'
 import Read from './components/Read'
 import Update from './components/Update'
 import AllUsers from './components/AllUsers'
+import EditUser from './components/EditUser'
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
         <Route path='/read' element={<Read />} />
         <Route path='/update' element={<Update />} />
         <Route path='/allusers' element={<AllUsers />} />
+        <Route path='/edit-user/:id' element={<EditUser />} />
       </Routes>
       <Toaster />
     </Router>
