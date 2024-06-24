@@ -33,13 +33,13 @@ const Read = () => {
 
 
         // vallidations
-        if (username === "") return toast.error("Username Cannot be Empty.")
-        if (password === "") return toast.error("Password Cannot be Empty.")
+        if (username === "") return toast.error("Username Cannot be Empty.", { id: 'user-fetch-toast' })
+        if (password === "") return toast.error("Password Cannot be Empty.", { id: 'user-fetch-toast' })
 
         // username
         const usernameExists = await checkUsernameExists(username)
         if (usernameExists) { }
-        else return toast.error('Username not exists.')
+        else return toast.error('Username not exists.', { id: 'user-fetch-toast' })
 
 
 
@@ -58,8 +58,8 @@ const Read = () => {
             body: JSON.stringify(data)
         })
 
-        if (response.ok) toast.success('Fetching User', { id: 'user-fetch-toast' });
-        else toast.error('Error Occurred.')
+        if (response.ok) toast.success('User Found', { id: 'user-fetch-toast' });
+        else toast.error('Error Occurred.', { id: 'user-fetch-toast' })
 
         const fetchedUser = response.json();
         fetchedUser.then((obj) => {

@@ -124,7 +124,7 @@ const Create = () => {
             toast.success('Data Inserted', { id: 'insert-toast' });
 
         } else {
-            toast.error("Form Not Submitted.");
+            toast.error("Form Not Submitted.", { id: 'insert-toast' });
         }
     };
 
