@@ -52,6 +52,8 @@ const Create = () => {
 
     const submit = async (event) => {
         event.preventDefault();
+        toast.loading('Inserting Data', { id: 'insert-toast' });
+
 
         // Validations
 
@@ -119,7 +121,8 @@ const Create = () => {
         });
 
         if (response.ok) {
-            toast.success("Form Submitted.");
+            toast.success('Data Inserted', { id: 'insert-toast' });
+
         } else {
             toast.error("Form Not Submitted.");
         }

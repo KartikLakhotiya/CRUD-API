@@ -29,6 +29,8 @@ const Read = () => {
 
     const fetchUser = async (event) => {
         event.preventDefault();
+        toast.loading('Fetching User', { id: 'user-fetch-toast' });
+
 
         // vallidations
         if (username === "") return toast.error("Username Cannot be Empty.")
@@ -56,7 +58,7 @@ const Read = () => {
             body: JSON.stringify(data)
         })
 
-        if (response.ok) toast.success('Data Fetched.')
+        if (response.ok) toast.success('Fetching User', { id: 'user-fetch-toast' });
         else toast.error('Error Occurred.')
 
         const fetchedUser = response.json();
