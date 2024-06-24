@@ -4,6 +4,9 @@ Welcome to the CRUD API repository! This project demonstrates a basic CRUD (Crea
 
 There are some unecessary codes in the backend directory but I will soon make the codes more readable and understandable. I added these codes for testing the APIs.
 
+## Live Link
+https://crud-api-topaz-mu.vercel.app/
+
 ## Features
 
 - **Create**: Add new resources to the database.
