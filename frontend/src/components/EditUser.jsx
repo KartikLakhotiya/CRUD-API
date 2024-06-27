@@ -67,12 +67,12 @@ const EditUser = () => {
         toast.loading('Updating User', { id: 'user-update-toast' });
         const { firstname, lastname, username, email, age, city } = userData
         // validations
-        if (userData.firstname === "") return toast.error("Firstname Cannot be Empty.");
-        if (userData.lastname === "") return toast.error("Lastname Cannot be Empty.");
-        if (userData.username === "") return toast.error("Username Cannot be Empty.");
-        if (userData.email === "") return toast.error("Email Cannot be Empty.");
-        if (userData.age === "") return toast.error("Age Cannot be Empty.");
-        if (userData.city === "") return toast.error("City Cannot be Empty.");
+        if (userData.firstname === "") return toast.error("Firstname Cannot be Empty.", { id: 'user-update-toast' });
+        if (userData.lastname === "") return toast.error("Lastname Cannot be Empty.", { id: 'user-update-toast' });
+        if (userData.username === "") return toast.error("Username Cannot be Empty.", { id: 'user-update-toast' });
+        if (userData.email === "") return toast.error("Email Cannot be Empty.", { id: 'user-update-toast' });
+        if (userData.age === "") return toast.error("Age Cannot be Empty.", { id: 'user-update-toast' });
+        if (userData.city === "") return toast.error("City Cannot be Empty.", { id: 'user-update-toast' });
 
 
         // Checking if username already exists in the database.

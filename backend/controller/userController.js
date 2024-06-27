@@ -100,6 +100,7 @@ export const fetchAll = async (req, res) => {
     }
 }
 
+/*
 export const editUser = async (req, res) => {
     const { id } = req.params;
     const { firstname, lastname, username, email, age, city } = req.body;
@@ -115,6 +116,7 @@ export const editUser = async (req, res) => {
         res.status(500).json({ error: "Internal Server Error" })
     }
 }
+*/
 
 export const deleteUser = async (req, res) => {
     const { id } = req.params;

@@ -39,7 +39,7 @@ const Read = () => {
         // username
         const usernameExists = await checkUsernameExists(username)
         if (usernameExists) { }
-        else return toast.error('Username not exists.', { id: 'user-fetch-toast' })
+        else return toast.error('Invalid Username.', { id: 'user-fetch-toast' })
 
 
 
@@ -59,7 +59,7 @@ const Read = () => {
         })
 
         if (response.ok) toast.success('User Found', { id: 'user-fetch-toast' });
-        else toast.error('Error Occurred.', { id: 'user-fetch-toast' })
+        else toast.error('Invalid Credentials.', { id: 'user-fetch-toast' })
 
         const fetchedUser = response.json();
         fetchedUser.then((obj) => {
@@ -73,7 +73,7 @@ const Read = () => {
 
     return (
         <div>
-            <h1 className='flex items-center justify-center mt-9 font-bold text-4xl'>Enter Username and Password To Fetch User</h1>
+            <h1 className='flex items-center justify-center mt-9 font-bold text-4xl'>Fetch User</h1>
             <div className='flex flex-row mt-11 items-center justify-center'>
 
                 <div class="w-96 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
