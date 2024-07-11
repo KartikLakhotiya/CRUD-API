@@ -2,8 +2,6 @@
 
 Welcome to the CRUD API repository! This project demonstrates a basic CRUD (Create, Read, Update, Delete) API using Node.js, Express, and MongoDB. This API allows users to create, read, update, and delete resources stored in a MongoDB database.
 
-## Live Link
-https://crud-api-topaz-mu.vercel.app/
 
 ## Features
 
