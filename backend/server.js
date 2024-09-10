@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }))
 
 
 app.get('/', (req, res) => {
-    res.send('Server is Ready')
+    res.send('CRUD API Server is Ready')
 })
 
 app.use('/api/auth', authRoutes)
