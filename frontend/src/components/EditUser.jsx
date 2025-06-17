@@ -17,7 +17,7 @@ const EditUser = () => {
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const response = await fetch(`https://crud-api-production-05cf.up.railway.app/api/auth/fetch/${id}`);
+                const response = await fetch(`https://crud-api-326a.onrender.comapi/auth/fetch/${id}`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
@@ -39,7 +39,7 @@ const EditUser = () => {
     };
 
     const checkUsernameExists = async (username) => {
-        const response = await fetch('https://crud-api-production-05cf.up.railway.app/api/auth/fetchall', {
+        const response = await fetch('https://crud-api-326a.onrender.comapi/auth/fetchall', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -51,7 +51,7 @@ const EditUser = () => {
     };
 
     const checkEmailExists = async (email) => {
-        const response = await fetch('https://crud-api-production-05cf.up.railway.app/api/auth/fetchall', {
+        const response = await fetch('https://crud-api-326a.onrender.comapi/auth/fetchall', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -88,7 +88,7 @@ const EditUser = () => {
         }
 
         try {
-            const response = await fetch(`https://crud-api-production-05cf.up.railway.app/api/auth/edit/editeduser/${id}`, {
+            const response = await fetch(`https://crud-api-326a.onrender.comapi/auth/edit/editeduser/${id}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

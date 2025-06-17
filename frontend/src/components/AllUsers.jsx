@@ -9,7 +9,7 @@ const AllUsers = () => {
     const fetchAll = async () => {
         try {
             toast.loading('Retrieving Data', { id: 'fetch-toast' });
-            const response = await fetch('https://crud-api-production-05cf.up.railway.app/api/auth/fetchall', {
+            const response = await fetch('https://crud-api-326a.onrender.comapi/auth/fetchall', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -33,7 +33,7 @@ const AllUsers = () => {
         toast.loading('Deleting User', { id: 'user-delete-toast' });
 
         try {
-            const response = await fetch(`https://crud-api-production-05cf.up.railway.app/api/auth/delete/${id}`, {
+            const response = await fetch(`https://crud-api-326a.onrender.comapi/auth/delete/${id}`, {
                 method: 'DELETE',
             });
             const a = await response.json();

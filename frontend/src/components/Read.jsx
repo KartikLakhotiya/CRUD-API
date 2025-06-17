@@ -16,7 +16,7 @@ const Read = () => {
     }
 
     const checkUsernameExists = async (username) => {
-        const response = await fetch('https://crud-api-production-05cf.up.railway.app/api/auth/fetchall', {
+        const response = await fetch('https://crud-api-326a.onrender.comapi/auth/fetchall', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -50,7 +50,7 @@ const Read = () => {
 
 
         // use http://localhost:8080 for local deployment
-        const response = await fetch('https://crud-api-production-05cf.up.railway.app/api/auth/getuser', {
+        const response = await fetch('https://crud-api-326a.onrender.comapi/auth/getuser', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
